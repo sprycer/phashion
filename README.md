@@ -13,6 +13,18 @@ You install it just like any other Ruby gem:
 
     gem install phashion
 
+If you got errors like this 
+
+    compiling phashion_ext.c
+    linking shared-object phashion_ext.so
+    /usr/bin/ld: cannot find -ljpeg
+    /usr/bin/ld: cannot find -lpng
+    collect2: ld returned 1 exit status
+    make: *** [phashion_ext.so] Error 1
+
+ sudo apt-get install libjpeg-dev
+ sudo apt-get install libpng-dev
+
 Phashion is somewhat involved to install as it has a few dependencies.  I've wrapped up those
 dependencies into a custom tarball that is built locally just for this gem so you don't have to
 do anything special.  See the code in `ext/phashion_ext` for more details.
