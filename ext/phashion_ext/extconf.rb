@@ -39,7 +39,14 @@ Dir.chdir(HERE) do
     system("cp -f libpHash.a libpHash_gem.a")
     system("cp -f libpHash.la libpHash_gem.la")
   end
-  $LIBS = " -lpthread -lpHash_gem -lstdc++ -ljpeg"
+
+  $LIBS = case RUBY_PLATFORM
+          when /darwin/
+            " -lpthread -lpHash_gem -lstdc++ -ljpeg"
+          else 
+            " -lpthread -lpHash_gem -lstdc++ -ljpeg -lpng"
+          end
+
 end
 
 create_makefile 'phashion_ext'
